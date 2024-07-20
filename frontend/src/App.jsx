@@ -13,12 +13,16 @@ const sampleDataForPhotoListItem = {
   username: "Joe Example",
   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
 };
-
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+  const photosArr = [];
+  for (let i = 0; i < 3; i++) {
+    photosArr.push(<PhotoListItem key={i + 1} photo={sampleDataForPhotoListItem} />)
+  }
+
   return (
     <div className="App">
-      <PhotoListItem photo={sampleDataForPhotoListItem} />
+      {photosArr}
     </div>
   );
 };
