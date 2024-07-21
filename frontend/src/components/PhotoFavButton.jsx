@@ -7,7 +7,7 @@ function PhotoFavButton(props) {
   return (
     <div className="photo-list__fav-icon" onClick={props.onClick}>
       <div className={props.isFavourite ? "photo-list__fav-icon-svg" : ""}>
-        <FavIcon />
+        <FavIcon selected={false} displayAlert={false} />
       </div>
     </div>
   );
