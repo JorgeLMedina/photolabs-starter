@@ -1,10 +1,9 @@
 // frontend/src/App.jsx
 import React from 'react';
 import PhotoList from 'components/PhotoList';
-
-// import PhotoListItem from './components/PhotoListItem';
-import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
+import TopicList from 'components/TopicList';
+import TopicListItem from 'components/TopicListItem';
 
 
 const App = () => {
@@ -13,6 +12,7 @@ const App = () => {
   return (
     <div className="App">
       {/* {photosArr} */}
+      <TopicList />
       <PhotoList />
     </div>
   );
