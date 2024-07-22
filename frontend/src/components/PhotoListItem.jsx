@@ -7,6 +7,7 @@ const PhotoListItem = (props) => {
   const [isFavourite, setIsFavourite] = useState(false);
 
   const clickFavButton = () => {
+    !isFavourite ? props.setFavoriteGlobalCounter(prev => prev + 1) : props.setFavoriteGlobalCounter(prev => prev + 1);
     setIsFavourite(prevFavourite => !prevFavourite);
   };
 

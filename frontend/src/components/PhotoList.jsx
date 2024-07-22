@@ -4,7 +4,7 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
   const photos = props.photos;
-  const photosArr = photos.map(item => <PhotoListItem key={item.id} photo={item} />);
+  const photosArr = photos.map(item => <PhotoListItem key={item.id} photo={item} favoriteGlobalCounter={props.favoriteGlobalCounter} setFavoriteGlobalCounter={props.setFavoriteGlobalCounter} />);
 
   return (
     <ul className="photo-list">
