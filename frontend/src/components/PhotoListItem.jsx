@@ -3,7 +3,7 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 import { useState } from "react";
 
-const PhotoListItem = ({ photo, toggleFavorite, isFavoriteInArr }) => {
+const PhotoListItem = ({ photo, toggleFavorite }) => {
   const [isFavourite, setIsFavourite] = useState(false);
 
   const clickFavButton = () => {

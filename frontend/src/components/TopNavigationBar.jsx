@@ -5,11 +5,14 @@ import FavBadge from './FavBadge';
 import TopicList from './TopicList';
 
 const TopNavigation = ({ topics, isThereAfavorite }) => {
+  const selectedConditional = isThereAfavorite();
+
+
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <TopicList topics={topics} />
-      <FavBadge isFavPhotoExist={false} isThereAfavorite={isThereAfavorite} />
+      <FavBadge isFavPhotoExist={selectedConditional ? true : false} selectedConditional={selectedConditional} />
     </div>
   )
 }

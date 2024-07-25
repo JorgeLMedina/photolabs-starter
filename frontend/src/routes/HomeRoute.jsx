@@ -23,15 +23,15 @@ const HomeRoute = (props) => {
     setFavorites(newArr);
   };
 
-  const isFavoriteInArr = (id) => {
-    return favorites.includes(id);
-  };
+  // const isFavoriteInArr = (id) => {
+  //   return favorites.includes(id);
+  // };
 
   const isThereAfavorite = () => {
-    if (favorites.length >= 0) {
-      return true;
+    if (!favorites.length) {
+      return false;
     }
-    return false;
+    return true;
   };
 
 
@@ -42,7 +42,7 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       <TopNavigation topics={props.topics} isThereAfavorite={isThereAfavorite} />
-      <PhotoList photos={props.photos} toggleFavorite={toggleFavorite} isFavoriteInArr={isFavoriteInArr} />
+      <PhotoList photos={props.photos} toggleFavorite={toggleFavorite} />
     </div>
   );
 };
