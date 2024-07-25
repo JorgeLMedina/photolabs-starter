@@ -14,17 +14,17 @@ const App = () => {
     setModal(prev => !prev);
   };
 
-  const [modalId, setModalId] = useState(0);
+  const [modalId, setModalId] = useState({});
 
   const toggleModalId = (id) => {
-    setModalId(id);
-    console.log(id);
+    setModalId(photos[id - 1]);
+    console.log(photos[id - 1]);
   };
 
   return (
     <div className="App">
       <HomeRoute photos={photos} topics={topics} toggleModal={toggleModal} toggleModalId={toggleModalId} />
-      {modal && <PhotoDetailsModal toggleModal={toggleModal} />}
+      {modal && <PhotoDetailsModal toggleModal={toggleModal} modalPicture={modalId} />}
     </div>
   );
 };
