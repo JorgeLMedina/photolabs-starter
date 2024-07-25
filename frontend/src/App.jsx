@@ -10,12 +10,12 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 const App = () => {
   const [modal, setModal] = useState(false);
 
-  const toggleModal = () => setModal(true);
+  const toggleModal = () => setModal(prev => !prev);
 
   return (
     <div className="App">
       <HomeRoute photos={photos} topics={topics} toggleModal={toggleModal} />
-      {modal && <PhotoDetailsModal />}
+      {modal && <PhotoDetailsModal toggleModal={toggleModal} />}
     </div>
   );
 };
