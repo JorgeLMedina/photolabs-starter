@@ -3,7 +3,7 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 import { useState } from "react";
 
-const PhotoListItem = ({ photo, toggleFavorite, toggleModal }) => {
+const PhotoListItem = ({ photo, toggleFavorite, toggleModal, toggleModalId }) => {
   const [isFavourite, setIsFavourite] = useState(false);
 
   const clickFavButton = () => {
@@ -11,10 +11,15 @@ const PhotoListItem = ({ photo, toggleFavorite, toggleModal }) => {
     toggleFavorite(photo.id);
   };
 
+  const manageModal = (id) => {
+    toggleModal();
+    toggleModalId(id);
+  };
+
   return (
     <article className="photo-list__item">
       <PhotoFavButton onClick={clickFavButton} isFavourite={isFavourite} />
-      <img onClick={() => toggleModal()} className="photo-list__image" src={photo.urls.regular} />
+      <img onClick={() => manageModal(photo.id)} className="photo-list__image" src={photo.urls.regular} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.user.profile} />
         <div className="photo-list__user-info">
