@@ -27,22 +27,12 @@ const HomeRoute = (props) => {
   //   return favorites.includes(id);
   // };
 
-  const isThereAfavorite = () => {
-    if (!favorites.length) {
-      return false;
-    }
-    return true;
-  };
-
-
-  // const trackerFavoriteGlobal = () => {
-  //   setFavouriteGlobalCounter(prevFavouriteGlobal => !prevFavouriteGlobal);
-  // };
+  const isFavoriteExist = () => favorites.length > 0;
 
   return (
     <div className="home-route">
-      <TopNavigation topics={props.topics} isThereAfavorite={isThereAfavorite} />
-      <PhotoList photos={props.photos} toggleFavorite={toggleFavorite} />
+      <TopNavigation topics={props.topics} isFavoriteExist={isFavoriteExist} />
+      <PhotoList photos={props.photos} toggleFavorite={toggleFavorite} toggleModal={props.toggleModal} />
     </div>
   );
 };
