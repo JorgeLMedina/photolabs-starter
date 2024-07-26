@@ -8,20 +8,8 @@ import topics from 'mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 const App = () => {
-  const [modal, setModal] = useState(false);
-  const [clickedPhotoId, setClickedPhotoId] = useState({});
+  const [modal, setModal] = useState(null);
   const [favorites, setFavorites] = useState([]);
-
-  ////////////////////////// MODAL useState
-  const toggleModal = () => {
-    setModal(prev => !prev);
-  };
-
-  ////////////////////////// CLICKEDPHOTOID useState
-  const getPhotoId = (id) => {
-    toggleModal();
-    setClickedPhotoId(photos[id - 1]);
-  };
 
   ////////////////////////// FAVORITES useState
   const toggleFavorite = (id) => {
@@ -36,24 +24,12 @@ const App = () => {
     setFavorites(newArr);
   };
 
-  // const isFavoriteInArr = (id) => {
-  //   return favorites.includes(id);
-  // };
-
-  const isFavoriteExist = () => favorites.length > 0;
-
-
-  // const toggleModalId = (id) => {
-  //   setModalId(photos[id - 1]);
-  //   console.log(photos[id - 1]);
-  // };
-
-  const photoHeaderForModal = { ...clickedPhotoId };
+  const closeModal = () => setModal(null);
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} toggleModal={toggleModal} getPhotoId={getPhotoId} toggleFavorite={toggleFavorite} isFavoriteExist={isFavoriteExist} />
-      {modal && <PhotoDetailsModal toggleModal={toggleModal} photoHeader={photoHeaderForModal} getPhotoId={getPhotoId} toggleFavorite={toggleFavorite} />}
+      <HomeRoute photos={photos} topics={topics} toggleFavorite={toggleFavorite} setModal={setModal} favoritesExist={favorites.length > 0} favorites={favorites} />
+      {modal && <PhotoDetailsModal photo={modal} toggleFavorite={toggleFavorite} favorites={favorites} closeModal={closeModal} setModal={setModal} photos={photos} />}
     </div>
   );
 };

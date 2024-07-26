@@ -1,16 +1,14 @@
 import React from 'react';
-import { useState } from 'react';
-
 import '../styles/HomeRoute.scss';
 
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-const HomeRoute = (props) => {
+const HomeRoute = ({ photos, topics, favoritesExist, toggleFavorite, setModal, favorites }) => {
   return (
     <div className="home-route">
-      <TopNavigation topics={props.topics} isFavoriteExist={props.isFavoriteExist} />
-      <PhotoList photos={props.photos} toggleFavorite={props.toggleFavorite} getPhotoId={props.getPhotoId} />
+      <TopNavigation topics={topics} favoritesExist={favoritesExist} />
+      <PhotoList photos={photos} toggleFavorite={toggleFavorite} setModal={setModal} favorites={favorites} />
     </div>
   );
 };
