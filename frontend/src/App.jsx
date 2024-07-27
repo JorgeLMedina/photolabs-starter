@@ -6,25 +6,10 @@ import HomeRoute from 'routes/HomeRoute';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
-  const [modal, setModal] = useState(null);
-  const [favorites, setFavorites] = useState([]);
-
-  ////////////////////////// FAVORITES useState
-  const toggleFavorite = (id) => {
-    if (favorites.includes(id)) {
-      // remove ID from array(f)
-      const newArr = favorites.filter(item => item !== id);
-      setFavorites(newArr);
-      return;
-    }
-    // add ID to array
-    const newArr = [...favorites, id]
-    setFavorites(newArr);
-  };
-
-  const closeModal = () => setModal(null);
+  const { modal, setModal, favorites, toggleFavorite, closeModal } = useApplicationData();
 
   return (
     <div className="App">
