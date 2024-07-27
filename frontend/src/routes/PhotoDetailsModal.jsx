@@ -13,14 +13,14 @@ const PhotoDetailsModal = ({ photo, toggleFavorite, closeModal, favorites, setMo
       <button onClick={closeModal} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
       </button>
-      <article className="photo-list__item">
+      <article className="photo-details-modal__item">
         <PhotoFavButton toggleFavorite={() => toggleFavorite(photo.id)} isFavourited={favorites.includes(photo.id)} />
         <img className="photo-details-modal__image" src={photo.urls.full} />
-        <div className="photo-list__user-details">
-          <img className="photo-list__user-profile" src={photo.user.profile} />
-          <div className="photo-list__user-info">
+        <div className="photo-details-modal__photographer-details">
+          <img className="photo-details-modal__photographer-profile" src={photo.user.profile} />
+          <div className="photo-details-modal__photographer-info">
             <h3>{photo.user.name}</h3>
-            <h3 className="photo-list__user-location">{`${photo.location.city}, ${photo.location.country}`}</h3>
+            <h3 className="photo-details-modal__photographer-location">{`${photo.location.city}, ${photo.location.country}`}</h3>
           </div>
         </div>
       </article>

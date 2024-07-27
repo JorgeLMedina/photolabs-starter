@@ -11,6 +11,13 @@
   border-radius: 12px;
 }
 
+.photo-details-modal__item {
+  margin: 24px;
+  padding: 8px;
+  max-width: fit-content;
+  background-color: #FFFFFF;
+}
+
 .photo-details-modal__close-button {
   background-color: white;
   border: none;
@@ -31,7 +38,7 @@
 
 .photo-details-modal__image {
   max-width: 95%;
-  border-radius: 8px;
+  margin: auto 0;
 }
 
 .photo-details-modal__top-bar {
