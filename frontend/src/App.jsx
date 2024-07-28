@@ -1,10 +1,7 @@
 // frontend/src/App.jsx
 import React from 'react';
-import { useState } from 'react';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
@@ -12,6 +9,9 @@ const App = () => {
   const { state, setModal, toggleFavorite, closeModal } = useApplicationData();
   const modal = state.modal;
   const favorites = state.favorites;
+  const photos = state.photoData;
+  const topics = state.topicData;
+  console.log(topics);
 
   return (
     <div className="App">
