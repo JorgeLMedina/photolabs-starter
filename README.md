@@ -26,5 +26,7 @@ npm start
 ## ScreenShots
 
 !["Home page"] (https://github.com/JorgeLMedina/photolabs-starter/blob/main/docs/home-page.jpg?raw=true)
+
 !["Modal Window for specific photo"] (https://github.com/JorgeLMedina/photolabs-starter/blob/main/docs/modal.jpg?raw=true)
+
 !["Home page"] (https://github.com/JorgeLMedina/photolabs-starter/blob/main/docs/modal-similar-photos.jpg?raw=true)
