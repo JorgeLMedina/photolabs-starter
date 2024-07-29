@@ -5,7 +5,7 @@ const CLOSE_MODAL = 'CLOSE_MODAL';
 const SET_MODAL = 'SET_MODAL';
 const SET_PHOTO_DATA = 'SET_PHOTO_DATA';
 const SET_TOPIC_DATA = 'SET_TOPIC_DATA';
-const SET_PHOTO_BY_TOPIC_DATA = 'SET_PHOTO_BY_TOPIC_DATA';
+const SET_TOPIC_ID = 'SET_TOPIC_ID';
 
 const useApplicationData = () => {
   const initialState = {
@@ -13,7 +13,7 @@ const useApplicationData = () => {
     favorites: [],
     photoData: [],
     topicData: [],
-    photoByTopicId: null
+    topicId: null
   };
 
   const reducer = (state, action) => {
@@ -51,10 +51,10 @@ const useApplicationData = () => {
           ...state,
           topicData: action.payload
         };
-      case SET_PHOTO_BY_TOPIC_DATA:
+      case SET_TOPIC_ID:
         return {
           ...state,
-          photoByTopic: action.photoByTopicId
+          topicId: action.topicId
         };
       default:
         return state;
@@ -69,7 +69,7 @@ const useApplicationData = () => {
       fetch('/api/photos').then(res => res.json()),
       fetch('/api/topics').then(res => res.json())
     ])
-      .then(([photoData, topicData, photoByTopicData]) => {
+      .then(([photoData, topicData]) => {
         dispatch({ type: SET_PHOTO_DATA, payload: photoData });
         dispatch({ type: SET_TOPIC_DATA, payload: topicData });
       })
@@ -79,12 +79,12 @@ const useApplicationData = () => {
   }, []);
 
   useEffect(() => {
-    if (initialState.photoByTopicId) {
-      fetch(`/api/topics/photos/${photoByTopicId}`)
+    if (state.topicId) {
+      fetch(`/api/topics/photos/${state.topicId}`)
         .then(res => res.json())
-        .then(data => dispatch({ type: SET_PHOTO_BY_TOPIC_DATA, payload: data }))
+        .then(data => dispatch({ type: SET_PHOTO_DATA, payload: data }))
     }
-  }, []);
+  }, [state.topicId]);
 
   const closeModal = () => {
     dispatch({ type: CLOSE_MODAL });
@@ -99,7 +99,7 @@ const useApplicationData = () => {
   };
 
   const setTopic = (topicId) => {
-    dispatch({ type: SET_PHOTO_BY_TOPIC_DATA, photoByTopic: topicId });
+    dispatch({ type: SET_TOPIC_ID, topicId: topicId });
   };
 
   return { state, setModal, toggleFavorite, closeModal, setTopic };
