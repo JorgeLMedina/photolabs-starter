@@ -2,11 +2,11 @@
   margin: 24px;
   padding: 8px;
   border-width: 0.5px;
-  border-color: #E6E6E6;
+  border-color: var(--tertiary-color);
   border-style: solid;
   border-radius: 8px;
   max-width: fit-content;
-  background-color: #FFFFFF;
+  background-color: var(--primary-color);
 }
 
 .photo-list__image {
@@ -35,15 +35,18 @@
 
 .photo-list__user-details {
   display: flex;
+  align-items: center;
 }
 
 .photo-list__user-info {
-  margin-top: 5px;
+  margin-top: 0;
   font-weight: 700;
   font-size: 12px;
   margin-left: 8px;
+  color: var(--seventiary-color);
 }
 
 .photo-list__user-location {
-  color: #838383;
+  color: var(--eightiary-color);
+  margin: 0;
 }

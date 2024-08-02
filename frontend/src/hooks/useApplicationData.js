@@ -6,6 +6,7 @@ const SET_MODAL = 'SET_MODAL';
 const SET_PHOTO_DATA = 'SET_PHOTO_DATA';
 const SET_TOPIC_DATA = 'SET_TOPIC_DATA';
 const SET_TOPIC_ID = 'SET_TOPIC_ID';
+const SET_DARK_MODE = 'SET_DARK_MODE';
 
 const useApplicationData = () => {
   const initialState = {
@@ -13,7 +14,8 @@ const useApplicationData = () => {
     favorites: [],
     photoData: [],
     topicData: [],
-    topicId: null
+    topicId: null,
+    darkMode: false
   };
 
   const reducer = (state, action) => {
@@ -56,6 +58,18 @@ const useApplicationData = () => {
           ...state,
           topicId: action.topicId
         };
+      case SET_DARK_MODE:
+        if (state.darkMode) {
+          return {
+            ...state,
+            darkMode: false
+          };
+        } else {
+          return {
+            ...state,
+            darkMode: true
+          };
+        }
       default:
         return state;
     }
@@ -102,7 +116,11 @@ const useApplicationData = () => {
     dispatch({ type: SET_TOPIC_ID, topicId: topicId });
   };
 
-  return { state, setModal, toggleFavorite, closeModal, setTopic };
+  const setDarkMode = () => {
+    dispatch({ type: SET_DARK_MODE })
+  };
+
+  return { state, setModal, toggleFavorite, closeModal, setTopic, setDarkMode };
 };
 
 export default useApplicationData;
